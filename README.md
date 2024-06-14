@@ -5,6 +5,9 @@ What is it?
 It mainly consists of 3 decorators for the [Confluent_kafka](https://github.com/confluentinc/confluent-kafka-python) client and an django integration
 
 
+## Installation
+
+one can install the package via the tar file in the dist folder
 
 ```
 pykafka = PyKafka([services],bootstrap_servers=["localhost:9092"])

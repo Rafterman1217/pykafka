@@ -1,6 +1,6 @@
 
 import logging
-from typing import Callable, List
+from typing import Callable
 from pykafka.types import Message
 
 logger = logging.getLogger("pykafka")

@@ -108,8 +108,8 @@ class PyKafka:
             None
         """
         self.periodic_producer_map.append(ppmt)
-        logger.info(f"Added periodic producer function for topic {
-                    ppmt.topic}, interval {ppmt.interval}, function {ppmt.func.__name__}")
+        logger.info(f"""Added periodic producer function for topic {
+                    ppmt.topic}, interval {ppmt.interval}, function {ppmt.func.__name__}""")
 
     def discover_decorated(self) -> None:
         """

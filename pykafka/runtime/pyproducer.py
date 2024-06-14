@@ -3,7 +3,6 @@
 
 from pykafka.config.producerConfig import ProducerConfig
 from confluent_kafka import Producer
-from pykafka.types import Message
 
 import logging
 

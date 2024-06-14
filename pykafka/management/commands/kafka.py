@@ -1,8 +1,8 @@
 
 import logging
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand # type: ignore
 from pykafka.runtime import PyKafka
-from django.conf import settings
+from django.conf import settings # type: ignore
 
 
 class Command(BaseCommand):

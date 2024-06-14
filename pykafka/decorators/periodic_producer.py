@@ -9,15 +9,26 @@ from pykafka.config import ProducerConfig
 logger = getLogger("pykafka")
 
 
+def periodic_producer(topic: str, interval_s: int, config: ProducerConfig) -> Callable[[Callable], Callable]:
+    """
+    Decorator function that creates a periodic producer.
 
+    Args:
+        topic (str): The Kafka topic to produce messages to.
+        interval_s (int): The interval in seconds between producing messages.
+        config (ProducerConfig): The configuration for the producer.
 
+    Returns:
+        Callable: The decorated function.
 
-def periodic_producer(topic:str,interval_s:int,config:ProducerConfig) -> Callable[[Callable],Callable]:
+    """
     producer = PyProducer(config)
-    def inner(func:Callable[[],dict]):
-        def wrapper(*args,**kwargs):
-            res = func(*args,**kwargs)
-            producer.produce(topic=topic,key=str(time.time()),value=json.dumps(res).encode("utf-8"))
+
+    def inner(func: Callable[[], dict]):
+        def wrapper(*args, **kwargs):
+            res = func(*args, **kwargs)
+            producer.produce(topic=topic, key=str(time.time()),
+                             value=json.dumps(res).encode("utf-8"))
             producer.flush()
             return res
         wrapper.__name__ = func.__name__
